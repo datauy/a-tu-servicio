@@ -1,0 +1,57 @@
+<h1>Comparacion</h1>
+
+Seleccionado: {{state.selected}} - {{providersByState(state.selected).length}}
+<ui-select ng-model="state.selected" theme="select2" ng-disabled="disabled" style="min-width: 300px;">
+  <ui-select-match placeholder="Elija un departamento">
+    {{state.selected.name}}
+  </ui-select-match>
+  <ui-select-choices repeat="state in states">
+    <div ng-bind-html="state.name | highlight: $select.search"></div>
+  </ui-select-choices>
+</ui-select>
+
+
+<ui-select ng-model="selectedProvider.selected" theme="select2" ng-disabled="disabled" style="min-width: 300px;">
+  <ui-select-match placeholder="Elija una institución">
+    {{selectedProvider.selected.id}}
+  </ui-select-match>
+  <ui-select-choices repeat="provider in providersByState(state.selected) track by $index">
+    <div ng-bind-html="provider.estructura.nombre_completo | highlight: $select.search"></div>
+  </ui-select-choices>
+</ui-select>
+
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Criterio</th>
+      <th ng-repeat="provider in selectedProviders">{{provider.estructura.nombre_completo}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-group"><td colspan="{{selectedProviders.length + 1}}">Estructura</td></tr>
+    <tr ng-repeat="attribute in structure_attr">
+      <td>{{attribute}}</td>
+      <td ng-repeat="provider in selectedProviders">{{provider.info.estructura[attribute]}}</td>
+    </tr>
+  <tbody>
+    <tr class="table-group"><td colspan="{{selectedProviders.length + 1}}">Precios</td></tr>
+    <tr ng-repeat="attribute in prices_attr">
+      <td>{{attribute}}</td>
+      <td ng-repeat="provider in selectedProviders">{{provider.info.precios[attribute]}} / {{stats.precios[attribute]["50"] | number:2 }}</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr class="table-group"><td colspan="{{selectedProviders.length + 1}}">Tiempos de Espera</td></tr>
+    <tr ng-repeat="attribute in times_attr">
+      <td>{{attribute}}</td>
+      <td ng-repeat="provider in selectedProviders">{{provider.info.tiempos_espera[attribute]}} / {{stats.tiempos_espera[attribute]["50"] | number:2 }}</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr class="table-group"><td colspan="{{selectedProviders.length + 1}}">Recursos Humanos</td></tr>
+    <tr ng-repeat="attribute in resources_attr">
+      <td>{{attribute}}</td>
+      <td ng-repeat="provider in selectedProviders">{{provider.info.rrhh[attribute]}} / {{stats.rrhh[attribute]["50"] | number:2 }}</td>
+    </tr>
+  </tbody>
+</table>
