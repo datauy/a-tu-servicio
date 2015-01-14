@@ -7,16 +7,22 @@ angular.module('saludEnCifrasApp')
         var data = res.data;
         $scope.stats = data["stats"];
         $scope.providers = data["providers"];
-        var provider = $scope.providers[0];
-        $scope.prices_attr = Object.keys(provider.precios);
-        $scope.times_attr = Object.keys(provider.tiempos_espera);
-        $scope.structure_attr = Object.keys(provider.estructura);
-        $scope.resources_attr = Object.keys(provider.rrhh);
+
+        // TODO: replace with real names
+        var providerStructure = $scope.providers[0];
+        $scope.prices_attr = Object.keys(providerStructure.precios);
+        $scope.times_attr = Object.keys(providerStructure.tiempos_espera);
+        $scope.structure_attr = Object.keys(providerStructure.estructura);
+        $scope.resources_attr = Object.keys(providerStructure.rrhh);
 
         $scope.lookupByState = data["lookup_by_state"];
         $scope.states = $scope.lookupByState;
-        $scope.state = {}
-        $scope.selectedProvider = {}
+
+        $scope.state = {};
+        $scope.provider = {}
+        $scope.selectedProviders = [];
+        $scope.maxComparedProviders = false;
+
 
         $scope.providersByState = function(lookupInfo) {
           if (lookupInfo) {
@@ -27,6 +33,19 @@ angular.module('saludEnCifrasApp')
             return $scope.providers;
           }
         };
+
+        $scope.addToComparison = function(item, model) {
+          $scope.selectedProviders.push(item);
+          $scope.state.selected = undefined;
+          $scope.provider.selected = undefined;
+          $scope.maxComparedProviders = ($scope.selectedProviders.length >= 3)
+        }
+
+        $scope.removeFromComparison = function(item) {
+          var providerIndex = $scope.selectedProviders.indexOf(item);
+          $scope.selectedProviders.splice(providerIndex, 1);
+          $scope.maxComparedProviders = ($scope.selectedProviders.length >= 3)
+        }
       });
 
   });
