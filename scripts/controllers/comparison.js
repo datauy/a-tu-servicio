@@ -35,10 +35,12 @@ angular.module('saludEnCifrasApp')
         };
 
         $scope.addToComparison = function(item, model) {
-          $scope.selectedProviders.push(item);
-          $scope.state.selected = undefined;
-          $scope.provider.selected = undefined;
-          $scope.maxComparedProviders = ($scope.selectedProviders.length >= 3)
+          if ($scope.selectedProviders.indexOf(item) < 0) {
+            $scope.selectedProviders.push(item);
+            $scope.state.selected = undefined;
+            $scope.provider.selected = undefined;
+            $scope.maxComparedProviders = ($scope.selectedProviders.length >= 3)
+          }
         }
 
         $scope.removeFromComparison = function(item) {
