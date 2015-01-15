@@ -19,7 +19,6 @@ angular.module('saludEnCifrasApp')
 
         $scope.lookupByState = data["lookup_by_state"]
         $scope.lookupByState.splice(0, 0, {name: "Todo el país"});
-        console.log($scope.lookupByState);
         $scope.states = $scope.lookupByState;
 
         $scope.state = {};

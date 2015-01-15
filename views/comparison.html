@@ -4,38 +4,41 @@
   Nota: sólo se pueden seleccionar hasta 3 instituciones a la vez.
   <a href="" ng-click="markAsRead()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
 </div>
-<div class="selected-providers">
-  <h3>Proveedores seleccionados:</h3>
-  <div class="list-group" ng-repeat="provider in selectedProviders">
-    <a href="" class="list-group-item dismissable" ng-click="removeFromComparison(provider)">
-      <span class="list-group-item-text glyphicon glyphicon-remove" aria-hidden="true"></span>
-      <h4 class="list-group-item-heading">{{provider.estructura.nombre_completo}}</h4>
-      <p class="list-group-item-text">Montevideo, Colonia, Tacuarembó</p>
-    </a>
+
+<div class="row compare">
+  <div class="col-md-4">
+    <h2>Selecciona un departamento</h2>
+    <ui-select ng-model="state.selected" allow-clear="true" theme="select2" 
+      ng-disabled="maxComparedProviders.warning">
+      <ui-select-match placeholder="Elija un departamento">{{state.selected.name}}</ui-select-match>
+      <ui-select-choices repeat="state in states">
+        <div ng-bind-html="state.name | highlight: $select.search"></div>
+      </ui-select-choices>
+    </ui-select>
   </div>
-</div>
-
-Filtrar Instituciones por Departamento:
-<ui-select ng-model="state.selected" allow-clear="true" theme="select2" ng-disabled="maxComparedProviders.warning" style="min-width: 300px;">
-  <ui-select-match placeholder="Elija un departamento">{{state.selected.name}}</ui-select-match>
-  <ui-select-choices repeat="state in states">
-    <div ng-bind-html="state.name | highlight: $select.search"></div>
-  </ui-select-choices>
-</ui-select>
-</div>
-
-<div>
-Elegir una institucion:
-<ui-select ng-model="provider.selected" theme="select2"
-           ng-disabled="maxComparedProviders.warning" style="min-width: 400px;" reset-search-input="true"
-           on-select="addToComparison($item, $model)">
-  <ui-select-match placeholder="Elija una institución">
-    {{provider.selected.estructura.nombre_abreviado}}
-  </ui-select-match>
-  <ui-select-choices repeat="provider in providersByState(state.selected) track by $index">
-    <div ng-bind-html="provider.estructura.nombre_completo | highlight: $select.search"></div>
-  </ui-select-choices>
-</ui-select>
+  <div class="col-md-4">
+    <h2>Elegir un prestador</h2>
+    <ui-select ng-model="provider.selected" theme="select2"
+               ng-disabled="maxComparedProviders.warning" reset-search-input="true"
+               on-select="addToComparison($item, $model)">
+      <ui-select-match placeholder="Elija una institución">
+        {{provider.selected.estructura.nombre_abreviado}}
+      </ui-select-match>
+      <ui-select-choices repeat="provider in providersByState(state.selected) track by $index">
+        <div ng-bind-html="provider.estructura.nombre_completo | highlight: $select.search"></div>
+      </ui-select-choices>
+    </ui-select>
+  </div>
+  <div class="col-md-4">
+    <h2>Proveedores seleccionados:</h2>
+    <div class="list-group" ng-repeat="provider in selectedProviders">
+      <a href="" class="list-group-item dismissable" ng-click="removeFromComparison(provider)">
+        <span class="list-group-item-text glyphicon glyphicon-remove" aria-hidden="true"></span>
+        <h4 class="list-group-item-heading">{{provider.estructura.nombre_completo}}</h4>
+        <p class="list-group-item-text">Montevideo, Colonia, Tacuarembó</p>
+      </a>
+    </div>
+  </div>
 </div>
 
 <table class='table table-striped'>
