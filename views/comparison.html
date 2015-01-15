@@ -1,18 +1,22 @@
 <h1>Comparacion</h1>
 
-Seleccionado: {{selectedProviders.length}} - {{maxComparedProviders}}
-<div class="too-many-selected-providers" ng-show="maxComparedProviders">
-  Sólo se pueden seleccionar hasta 3 instituciones a la vez.
+<div class="alert alert-warning dismissable" ng-show="showWarning()">
+  Nota: sólo se pueden seleccionar hasta 3 instituciones a la vez.
+  <a href="" ng-click="markAsRead()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
 </div>
 <div class="selected-providers">
-  <div ng-repeat="provider in selectedProviders">
-    {{provider.estructura.nombre_completo}}
-    <a href="" ng-click="removeFromComparison(provider)">X</a>
+  <h3>Proveedores seleccionados:</h3>
+  <div class="list-group" ng-repeat="provider in selectedProviders">
+    <a href="" class="list-group-item dismissable" ng-click="removeFromComparison(provider)">
+      <span class="list-group-item-text glyphicon glyphicon-remove" aria-hidden="true"></span>
+      <h4 class="list-group-item-heading">{{provider.estructura.nombre_completo}}</h4>
+      <p class="list-group-item-text">Montevideo, Colonia, Tacuarembó</p>
+    </a>
   </div>
 </div>
 
 Filtrar Instituciones por Departamento:
-<ui-select ng-model="state.selected" theme="select2" ng-disabled="disabled" style="min-width: 300px;">
+<ui-select ng-model="state.selected" allow-clear="true" theme="select2" ng-disabled="maxComparedProviders.warning" style="min-width: 300px;">
   <ui-select-match placeholder="Elija un departamento">{{state.selected.name}}</ui-select-match>
   <ui-select-choices repeat="state in states">
     <div ng-bind-html="state.name | highlight: $select.search"></div>
@@ -23,7 +27,7 @@ Filtrar Instituciones por Departamento:
 <div>
 Elegir una institucion:
 <ui-select ng-model="provider.selected" theme="select2"
-           ng-disabled="maxComparedProviders" style="min-width: 400px;" reset-search-input="true"
+           ng-disabled="maxComparedProviders.warning" style="min-width: 400px;" reset-search-input="true"
            on-select="addToComparison($item, $model)">
   <ui-select-match placeholder="Elija una institución">
     {{provider.selected.estructura.nombre_abreviado}}

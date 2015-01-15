@@ -20,3 +20,8 @@ table tr.table-group td {
   font-size: 110%;
   background: darkgray;
 }
+
+/** Comparison **/
+.dismissable span.glyphicon-remove {
+    float: right;
+}
