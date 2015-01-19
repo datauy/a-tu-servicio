@@ -32,8 +32,9 @@
   <div class="col-md-4">
     <h2>Proveedores seleccionados:</h2>
     <div class="list-group" ng-repeat="provider in selectedProviders">
-      <a href="" class="list-group-item dismissable" ng-click="removeFromComparison(provider)">
-        <span class="list-group-item-text glyphicon glyphicon-remove" aria-hidden="true"></span>
+      <a href="" class="list-group-item dismissable">
+        <span class="list-group-item-text glyphicon glyphicon-remove" aria-hidden="true" 
+          ng-click="removeFromComparison(provider)"></span>
         <h4 class="list-group-item-heading">{{provider.estructura.nombre_completo}}</h4>
         <p class="list-group-item-text">Montevideo, Colonia, Tacuarembó</p>
       </a>
