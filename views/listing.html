@@ -1,3 +1,6 @@
+<tour step="currentStep">
+<a href="" ng-click="openTour()">Empezar Tour</a>
+
 <h1>Listado</h1>
 
 <table class='table table-striped'>
@@ -5,7 +8,7 @@
     <tr>
       <th class="col-md-3">
         <div>
-          <h1>Prestador</h1>
+          <h1 tourtip="tip 1" tourtip-step="0">Prestador</h1>
         </div>
         <div class="description">
           <ul>
@@ -84,6 +87,10 @@
           <h1>{{provider.estructura.nombre_completo}}</h1>
           <h3>{{provider.estructura.web}}</h3>
           <p>Estructura:</p>
+          {{provider.estructura_por_departamento}}
+          <!-- {{provider.estructura_por_departamento["Canelones"]["Cantidad de sedes secundarias"]}} -->
+          <!-- {{provider.estructura_por_departamento["Canelones"]["Cantidad de sedes ambulatorias"]}} -->
+          <!-- {{provider.estructura_por_departamento["Canelones"]["Tiene urgencia"]}} -->
           <p>Asignación de citas:</p>
           <a href="">Comparar</a>
         </div>
@@ -92,11 +99,12 @@
       <td>
         <!-- add directive for this provider -->
         <div class="time_pie">
-          <p>{{provider.tiempos_espera.medicina_general}}</p>
-          <p>{{provider.tiempos_espera.cirugia}}</p>
-          <p>{{provider.tiempos_espera.pediatria}}</p>
-          <p>{{provider.tiempos_espera.ginecologia}}</p>
-          <p>{{provider.tiempos_espera.medico_referencia}}</p>
+          {{provider.tiempos_espera}}
+          <!-- <p>{{provider.tiempos_espera.medicina_general}}</p> -->
+          <!-- <p>{{provider.tiempos_espera.cirugia}}</p> -->
+          <!-- <p>{{provider.tiempos_espera.pediatria}}</p> -->
+          <!-- <p>{{provider.tiempos_espera.ginecologia}}</p> -->
+          <!-- <p>{{provider.tiempos_espera.medico_referencia}}</p> -->
         </div>
       </td>
       <td>
@@ -111,10 +119,10 @@
       <td>
         <!-- add directive for this provider -->
         <div class="price_icons">
-          <p>{{provider.precios.promedios.medicamentos | number:2}}</p>
-          <p>{{provider.precios.promedios.tickets | number:2}}</p>
-          <p>{{provider.precios.promedios.tickets_urgentes | number:2}}</p>
-          <p>{{provider.precios.promedios.estudios | number:2}}</p>
+          <p>{{provider.precios.averages.medicamentos | number:2}}</p>
+          <p>{{provider.precios.averages.tickets | number:2}}</p>
+          <p>{{provider.precios.averages.tickets_urgentes | number:2}}</p>
+          <p>{{provider.precios.averages.estudios | number:2}}</p>
         </div>
       </td>
       <td>
@@ -128,5 +136,17 @@
           <p>{{provider.rrhh.lic_enfermeria}}</p>
         </div>
       </td>
+      <td>
+        <!-- add directive for this provider -->
+        <div class="sedes">
+          <p>{{provider.rrhh.medicos_generales}}</p>
+          <p>{{provider.rrhh.medicos_familia}}</p>
+          <p>{{provider.rrhh.pediatras}}</p>
+          <p>{{provider.rrhh.ginecologos}}</p>
+          <p>{{provider.rrhh.aux_enfermeria}}</p>
+          <p>{{provider.rrhh.lic_enfermeria}}</p>
+        </div>
+      </td>
     </tr>
   </tbody>
+</tour>

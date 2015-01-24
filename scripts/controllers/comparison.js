@@ -6,20 +6,19 @@ angular.module('saludEnCifrasApp')
       .then(function(res) {
         var data = res.data;
         var MAX_PROVIDERS_COMPARED = 3;
-        $scope.stats = data["stats"];
+        // $scope.stats = data["stats"];
         $scope.providers = data["providers"];
-
-
-        // TODO: replace with real names
-        var providerStructure = $scope.providers[0];
-        $scope.prices_attr = Object.keys(providerStructure.precios);
-        $scope.times_attr = Object.keys(providerStructure.tiempos_espera);
-        $scope.structure_attr = Object.keys(providerStructure.estructura);
-        $scope.resources_attr = Object.keys(providerStructure.rrhh);
 
         $scope.lookupByState = data["lookup_by_state"]
         $scope.lookupByState.splice(0, 0, {name: "Todo el país"});
         $scope.states = $scope.lookupByState;
+
+        // TODO: replace with real names
+        var providerStructure = $scope.providers[0];
+        // $scope.prices_attr = Object.keys(providerStructure.precios);
+        // $scope.times_attr = Object.keys(providerStructure.tiempos_espera);
+        // $scope.structure_attr = Object.keys(providerStructure.estructura);
+        // $scope.resources_attr = Object.keys(providerStructure.rrhh);
 
         $scope.state = {};
         $scope.provider = {}
