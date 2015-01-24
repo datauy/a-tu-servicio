@@ -22,9 +22,10 @@
                ng-disabled="maxComparedProviders.warning" reset-search-input="true"
                on-select="addToComparison($item, $model)">
       <ui-select-match placeholder="Elija una institución">
-        {{provider.selected.estructura['Nombre abreviado']}}
+      {{provider.id}} - {{provider.selected.estructura['Nombre abreviado']}}
       </ui-select-match>
       <ui-select-choices repeat="provider in providersByState(state.selected) track by $index">
+        <div ng-bind-html="provider.id"></div>
         <div ng-bind-html="provider.estructura['Nombre abreviado'] | highlight: $select.search"></div>
       </ui-select-choices>
     </ui-select>
