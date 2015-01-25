@@ -42,51 +42,26 @@
     </div>
   </div>
 </div>
-
-<table class='table table-striped'>
-  <thead>
-    <tr>
-      <th>Criterio</th>
-      <th ng-repeat="provider in selectedProviders">{{provider.estructura.nombre_completo}}</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr class="table-group"><td colspan="{{selectedProviders.length + 1}}">Estructura</td></tr>
-    <tr ng-repeat="attribute in structure_attr">
-      <td>{{attribute}}</td>
-      <td ng-repeat="provider in selectedProviders">{{provider.estructura[attribute]}}</td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr class="table-group"><td colspan="{{selectedProviders.length + 1}}">Precios</td></tr>
-    <tr ng-repeat="attribute in prices_attr">
-      <td>{{attribute}}</td>
-      <td ng-repeat="provider in selectedProviders">{{provider.precios[attribute]}} / {{stats.precios[attribute]["50"] | number:2 }}</td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr class="table-group"><td colspan="{{selectedProviders.length + 1}}">Tiempos de Espera</td></tr>
-    <tr ng-repeat="attribute in times_attr">
-      <td>{{attribute}}</td>
-      <td ng-repeat="provider in selectedProviders">{{provider.tiempos_espera[attribute]}} / {{stats.tiempos_espera[attribute]["50"] | number:2 }}</td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr class="table-group"><td colspan="{{selectedProviders.length + 1}}">Recursos Humanos</td></tr>
-    <tr ng-repeat="attribute in resources_attr">
-      <td>{{attribute}}</td>
-      <td ng-repeat="provider in selectedProviders">{{provider.rrhh[attribute]}} / {{stats.rrhh[attribute]["50"] | number:2 }}</td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr class="table-group"><td colspan="{{selectedProviders.length + 1}}">Sedes</td></tr>
-    <tr ng-repeat="sede in sedes">
-      {{sede}}
-
-      <!-- <td>{{attribute}}</td> -->
-      <!-- <td ng&#45;repeat="provider in selectedProviders">{{provider.rrhh[attribute]}} / {{stats.rrhh[attribute]["50"] | number:2 }}</td> -->
-    </tr>
-  </tbody>
-</table>
-
+<div class='row'>
+  <table class='table table-striped' ng-if="selectedProviders.length > 0">
+    <thead>
+      <tr>
+        <th></th>
+        <th ng-repeat="provider in selectedProviders">{{provider.id}}</th>
+      </tr>
+    </thead>
+    <tbody ng-repeat="(name, dataGroup) in selectedProviders[0]">
+      <tr class="table-group">
+        <td colspan="3">{{name}}</td>
+      </tr>
+      <tr ng-repeat="(key, value) in dataGroup">
+        <td>{{key}}</td>
+        <td ng-repeat="provider in selectedProviders">
+          <!-- TODO: nested objects? -->
+            {{provider[name][key]}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
