@@ -1,3 +1,7 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+
 ul.menu li{
     display: inline-block;
 }
@@ -37,6 +41,12 @@ ul.menu li{
     padding: 10px 55px;
 }
 
+.contenido{
+    margin-bottom: 26px;
+    border-bottom: 1px solid #d8dde1;
+    padding-bottom: 15px;
+}
+
 #filtros{
     text-align: center;
 }
@@ -49,12 +59,31 @@ ul.menu li{
     background: #135380;
     margin: 0 4px 8px 0;
     padding: 10px;
-    width: 170px;
+    width: 174px;
+    color: #fff;
+}
+
+#filtros ul li:hover{
+    background: #0d2f74;
+}
+
+#filtros ul li p{
+    margin: 10px 0 5px 0;
 }
 
 .referencias{
     font-size: 13px;
     border-radius: 15px;
     padding: 6px 15px;
-    margin-left: 40px;
+}
+
+#footer{
+    background-color: #d9e4ec;
+    overflow: hidden;
+}
+
+.footer-info{
+    background-color: #edf4f9;
+    margin-bottom: 150px;
+    padding: 64px 24px;
 }
