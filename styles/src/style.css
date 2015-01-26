@@ -26,12 +26,16 @@ ul.menu li{
     padding-top: 87px;
 }
 
-#logo-data{
+#logos{
     text-align: center;
 }
 
-#logo{
+#logos{
     max-width: 100%;
+}
+
+#logos ul li{
+    margin: 14px;
 }
 
 .entendi{
