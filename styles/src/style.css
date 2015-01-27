@@ -16,6 +16,16 @@ ul.menu li{
 
 #header h2{
     font-size: 23px;
+    line-height: 32px;
+    background: url(../img/01.png) left top no-repeat;
+}
+
+.header-select .col-md-4 > *{
+    padding-left: 39px;
+}
+
+#seleccionar{
+    background: url(../img/01.png) left top no-repeat;
 }
 
 #header select{
@@ -24,6 +34,22 @@ ul.menu li{
 
 .header-info, .header-select{
     padding-top: 87px;
+}
+
+#nav-menu{
+    float: right;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+}
+
+#nav-menu ul.menu li{
+    margin-right: 15px;
+}
+#nav-menu ul.menu li a{
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
 }
 
 #logos{
