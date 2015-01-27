@@ -28,3 +28,5 @@ push = refs/heads/master:refs/heads/gh-pages
 
 
 
+## TODO
+- [ ] Remove the id's from comparing view

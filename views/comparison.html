@@ -1,67 +1,78 @@
-<h1>Comparacion</h1>
+<div class="container" id="comparar">
+  <h1>Comparar</h1>
 
-<div class="alert alert-warning dismissable" ng-show="showWarning()">
-  Nota: sólo se pueden seleccionar hasta 3 instituciones a la vez.
-  <a href="" ng-click="markAsRead()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-</div>
+  <div class="alert alert-warning dismissable" ng-show="showWarning()">
+    Nota: sólo se pueden seleccionar hasta 3 instituciones a la vez.
+    <a href="" ng-click="markAsRead()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+  </div>
 
-<div class="row compare">
-  <div class="col-md-4">
-    <h2>Selecciona un departamento</h2>
-    <ui-select ng-model="state.selected" allow-clear="true" theme="select2" 
-      ng-disabled="maxComparedProviders.warning">
-      <ui-select-match placeholder="Elija un departamento">{{state.selected.name}}</ui-select-match>
-      <ui-select-choices repeat="state in states">
-        <div ng-bind-html="state.name | highlight: $select.search"></div>
-      </ui-select-choices>
-    </ui-select>
-  </div>
-  <div class="col-md-4">
-    <h2>Elegir un prestador</h2>
-    <ui-select ng-model="provider.selected" theme="select2"
-               ng-disabled="maxComparedProviders.warning" reset-search-input="true"
-               on-select="addToComparison($item, $model)">
-      <ui-select-match placeholder="Elija una institución">
-      {{provider.id}} - {{provider.selected.estructura['Nombre abreviado']}}
-      </ui-select-match>
-      <ui-select-choices repeat="provider in providersByState(state.selected) track by $index">
-        <div ng-bind-html="provider.id"></div>
-        <div ng-bind-html="provider.estructura['Nombre abreviado'] | highlight: $select.search"></div>
-      </ui-select-choices>
-    </ui-select>
-  </div>
-  <div class="col-md-4">
-    <h2>Proveedores seleccionados:</h2>
-    <div class="list-group" ng-repeat="provider in selectedProviders">
-      <a href="" class="list-group-item dismissable">
-        <span class="list-group-item-text glyphicon glyphicon-remove" aria-hidden="true" 
-          ng-click="removeFromComparison(provider)"></span>
-        <h4 class="list-group-item-heading">{{provider.estructura['Nombre Completo']}}</h4>
-        <!-- <p class="list&#45;group&#45;item&#45;text">Montevideo, Colonia, Tacuarembó</p> -->
-      </a>
+  <div class="row compare">
+    <div class="col-md-6">
+      <h2>Selecciona un departamento</h2>
+      <ui-select ng-model="state.selected" allow-clear="true" theme="select2"
+                 ng-disabled="maxComparedProviders.warning">
+        <ui-select-match placeholder="Elija un departamento">{{state.selected.name}}</ui-select-match>
+        <ui-select-choices repeat="state in states">
+          <div ng-bind-html="state.name | highlight: $select.search"></div>
+        </ui-select-choices>
+      </ui-select>
+    </div>
+
+    <div class="col-md-6">
+      <h2>Elegir un prestador</h2>
+      <ui-select ng-model="provider.selected" theme="select2"
+                 ng-disabled="maxComparedProviders.warning" reset-search-input="true"
+                 on-select="addToComparison($item, $model)">
+        <ui-select-match placeholder="Elija una institución">
+          {{provider.id}} - {{provider.selected.estructura['Nombre abreviado']}}
+        </ui-select-match>
+        <ui-select-choices repeat="provider in providersByState(state.selected) track by $index">
+          <div ng-bind-html="provider.id"></div>
+          <div ng-bind-html="provider.estructura['Nombre abreviado'] | highlight: $select.search"></div>
+        </ui-select-choices>
+      </ui-select>
     </div>
   </div>
-</div>
-<div class='row'>
-  <table class='table table-striped' ng-if="selectedProviders.length > 0">
-    <thead>
-      <tr>
-        <th></th>
-        <th ng-repeat="provider in selectedProviders">{{provider.id}}</th>
-      </tr>
-    </thead>
-    <tbody ng-repeat="(name, dataGroup) in selectedProviders[0]">
-      <tr class="table-group">
-        <td colspan="3">{{name}}</td>
-      </tr>
-      <tr ng-repeat="(key, value) in dataGroup">
-        <td>{{key}}</td>
-        <td ng-repeat="provider in selectedProviders">
-          <!-- TODO: nested objects? -->
-            {{provider[name][key]}}
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
 
+  <div class="row">
+    <div class="col-md-12 criterio">
+      <ul class="menu">
+        <li>Criterio</li>
+        <li ng-repeat="provider in selectedProviders">
+          {{provider.estructura['Nombre Completo']}}
+          <a href="" class="dismissable">
+            <span class="glyphicon glyphicon-remove"
+                  aria-hidden="true"
+                  ng-click="removeFromComparison(provider)"></span>
+          </a>
+        </li>
+        <!-- <p class="list&#45;group&#45;item&#45;text">Montevideo,
+          Colonia, Tacuarembó</p> -->
+      </ul>
+    </div>
+  </div>
+
+  <div class='row'>
+    <table class='table table-striped' ng-if="selectedProviders.length > 0">
+      <thead>
+        <tr>
+          <th></th>
+          <th ng-repeat="provider in selectedProviders">{{provider.id}}</th>
+        </tr>
+      </thead>
+      <tbody ng-repeat="(name, dataGroup) in selectedProviders[0]">
+        <tr>
+          <td colspan="3" class="table-title">{{name}}</td>
+        </tr>
+        <tr ng-repeat="(key, value) in dataGroup">
+          <td>{{key}}</td>
+          <td ng-repeat="provider in selectedProviders">
+            <!-- TODO: nested objects? -->
+            {{provider[name][key]}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
