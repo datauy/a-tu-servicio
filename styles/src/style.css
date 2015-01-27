@@ -20,6 +20,10 @@ ul.menu li{
     background: url(../img/01.png) left top no-repeat;
 }
 
+#header a{
+    color: #fff;
+}
+
 .header-select .col-md-4 > *{
     padding-left: 39px;
 }
@@ -49,7 +53,6 @@ ul.menu li{
 #nav-menu ul.menu li a{
     font-size: 12px;
     font-weight: bold;
-    color: #fff;
 }
 
 #logos{
