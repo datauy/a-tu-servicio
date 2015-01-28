@@ -58,7 +58,8 @@
       <h2 id="seleccionar">Selecciona tu departamento</h2>
       <p>Pod&eacute;s seleccionar tu mutualista actual o a la
         que quieras comparar.</p>
-        {{states}}<br/>{{state}}
+        <!-- {{states}}<br/>{{state}} -->
+        {{state.selected.name}}
       <p>
         <ui-select ng-model="state.selected" allow-clear="true" theme="select2">
           <ui-select-match placeholder="Elija un departamento">{{state.selected.name}}</ui-select-match>
@@ -73,9 +74,10 @@
         Selecciona tu prestador de salud y afiliaci&oacute;n
       </h2>
       <p>
+    {{provider.selected.estructura['Nombre abreviado']}}
         <ui-select ng-model="provider.selected" theme="select2" reset-search-input="true">
           <ui-select-match placeholder="Elija una institución">
-            {{provider.id}} - {{provider.selected.estructura['Nombre abreviado']}}
+            {{provider.selected.estructura['Nombre abreviado']}}
           </ui-select-match>
           <ui-select-choices repeat="provider in providersByState(state.selected) track by $index">
             <div ng-bind-html="provider.id"></div>
@@ -100,3 +102,126 @@
   </div>
 </div>
 <!-- end header -->
+
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th class="col-md-3">
+        <div>
+          <h1 tourtip="tip 1" tourtip-step="0">Prestador</h1>
+        </div>
+        <div class="description">
+          <ul>
+            <li>Sede Primaria</li>
+            <li>Sede Secundaria</li>
+            <li>Policlínicas</li>
+            <li>Urgencia</li>
+          </ul>
+        </div>
+      </th>
+      <th class="col-md-3">
+        <div>
+          <h1>Tiempo de espera</h1>
+        </div>
+        <div class="description">
+          <ul>
+            <li>Medicina gral.</li>
+            <li>Cirugía gral.</li>
+            <li>Pediatría</li>
+            <li>Ginecología</li>
+            <li>Médico de referencia</li>
+          </ul>
+        </div>
+      </th>
+      <th class="col-md-3">
+        <div>
+          <h1>Metas asistenciales</h1>
+        </div>
+        <div class="description">
+          <ul>
+            <li>Satisfaccion</li>
+            <li>Disp.agenda</li>
+            <li>Tramites</li>
+            <li>Disp. medicam.</li>
+            <li>Info. derechos</li>
+            <li>Recep. quejas</li>
+          </ul>
+        </div>
+      </th>
+      <th class="col-md-3">
+        <div>
+          <h1>Costo promedio</h1>
+        </div>
+        <div class="description">
+          <ul>
+            <li>Medicamentos</li>
+            <li>Tickets</li>
+            <li>Urgencia</li>
+            <li>Estudios</li>
+          </ul>
+        </div>
+      </th>
+      <th class="col-md-3">
+        <div>
+          <h1>Personal disponible</h1>
+        </div>
+        <div class="description">
+          <ul>
+            <li>Medicos generales</li>
+            <li>Medicos familia</li>
+            <li>Pediatras</li>
+            <li>Ginecólogos</li>
+            <li>Enfermeros</li>
+            <li>Lic. en Enfermería</li>
+          </ul>
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="provider in providers">
+      <td>
+        <!-- add directive for this -->
+        <div class="info">
+          {{provider.id}}
+          <h1>{{provider.estructura.nombre_completo}}</h1>
+          <h3>{{provider.estructura.web}}</h3>
+          <p>Estructura:</p>
+        
+          {{provider.estructura_por_departamento[state.selected.name]}}
+          <p>Asignación de citas:</p>
+          <a href="">Comparar</a>
+        </div>
+        </div>
+      </td>
+      <td>
+        <!-- add directive for this provider -->
+        <div class="time_pie">
+          {{provider.tiempos_espera}}
+        </div>
+      </td>
+      <td>
+        <!-- add directive for this provider -->
+        <div class="objectives_progress">
+          <p>{{provider.satisfaccion_derechos}}</p>
+        </div>
+      </td>
+      <td>
+        <!-- add directive for this provider -->
+        <div class="price_icons">
+          <p>{{provider.precios.averages}}</p>
+        </div>
+      </td>
+      <td>
+        <div class="price_icons">
+          <p>{{provider.rrhh}}</p>
+        </div>
+      </td>
+      <td>
+        <div class="afiliados">
+          <p>{{provider.estructura['Total de afiliados']}}</p>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
