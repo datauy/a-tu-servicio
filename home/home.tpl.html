@@ -225,7 +225,8 @@
           <h1>{{provider.estructura.nombre_completo}}</h1>
           <h3>{{provider.estructura.web}}</h3>
           <p>Estructura:</p>
-        
+          <div ng-unless={{state.selected}}>Sedes en {{provider.estructura_por_departamento}}</div>
+
           {{provider.estructura_por_departamento[state.selected.name]}}
           <p>Asignación de citas:</p>
           <a href="">Comparar</a>
