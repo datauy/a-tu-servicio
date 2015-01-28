@@ -5,19 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Salud en Cifras - 2015</title>
   <!-- for best results of ngCloak -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular.js"></script>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.min.css"
   <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.9.5/select.css'>
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">
-  <link rel="stylesheet"
-        href="bower_components/angular-tour/dist/angular-tour.css"/>
+  <!-- <link rel="stylesheet" -->
+  <!--       href="bower_components/angular&#45;tour/dist/angular&#45;tour.css"/> -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   <!-- Custom styles -->
   <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.min.js">
 </head>
-<body ng-app="saludEnCifrasApp" ng-cloak>
-  <!--[if lt IE 7]>
+<body ng-app="aTuServicioApp" ng-cloak>
+    <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
       <![endif]-->
 
@@ -169,10 +171,9 @@
     <!-- <script src="bower_components/angular&#45;tour/dist/angular&#45;tour&#45;tpls.js"></script> -->
 
     <!-- app scripts -->
-    <script src='scripts/app.js'></script>
-    <script src='scripts/controllers/config.js'></script>
-    <script src='scripts/controllers/listing.js'></script>
-    <script src='scripts/controllers/about.js'></script>
-    <script src='scripts/controllers/comparison.js'></script>
+    <script src='app.js'></script>
+    <script src='common/services/load_data.js'></script>
+    <script src='home/home.js'></script>
+    <script src='comparison/comparison.js'></script>
 </body>
 </html>
