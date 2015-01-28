@@ -110,6 +110,32 @@ ul.menu li{
     padding: 6px 15px;
 }
 
+.comparision-header{
+    height: 80px;
+    background: #0d2f48;
+}
+
+.comparision-header ul{
+    float: right;
+    display: block;
+    margin: 25px 10px;
+}
+
+.comparision-header ul li{
+    margin-left: 30px;
+}
+
+.comparision-header a{
+    color: #fff;
+    font-weight: bold;
+}
+
+.comparision-header a:hover{
+    border-bottom: 1px solid #fff;
+    text-decoration: none;
+    padding-bottom: 4px;
+}
+
 #footer{
     background-color: #d9e4ec;
     overflow: hidden;
