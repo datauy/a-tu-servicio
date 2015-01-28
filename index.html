@@ -16,161 +16,63 @@
   <link rel="stylesheet" href="styles/style.css">
 </head>
 <body ng-app="aTuServicioApp" ng-cloak>
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-      <![endif]-->
+  <!--[if lt IE 7]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
 
-  <div id="header">
-    <div class="header-info">
-      <div id="nav-menu">
-        <ul class="menu">
-          <li>
-            <a ng-href="#/">
-              Listado
-            </a>
-          </li>
-          <li>
-            <a ng-href="#/comparar">
-              Comparar
-            </a>
-          </li>
-          <li>
-            <a ng-href="#/quienes-somos">
-              Quienes somos
-            </a>
-          </li>
-        </ul>
-      </div>
+  <div ng-view=""></div>
+
+  <div id="footer">
+    <div class="row footer-info">
       <div class="col-md-4">
-        <a href="/" title="atuservicio">
-          <img src="img/logo-atuservicio.png" alt="atuservicio" id="logo"/>
-        </a>
-      </div>
-      <div class="col-md-4">
+        <h4>Acerca de DATA</h4>
         <p>
-          180 CIENCIA y DATA te dan una herramienta para que
-          contestando unas simples preguntas, veas qu&eacute;
-          prestador de salud te conviene seg&uacute;n los indicadores
-          asociados a Metas Asistenciales publicados por el Ministerio
-          de Salud P&uacute;blica.
+          Gumbo beet greens corn soko endive gumbo gourd. Parsley
+          shallot courgette tatsoi pea sprouts fava bean collard
+          greens dandelion okra wakame tomato. Dandelion cucumber
+          earthnut pea peanut soko zucchini.
         </p>
-        <p><a href="#">Más información ></a></p>
-</div>
-<div class="col-md-4" id="logos">
-  <ul class="menu">
-    <li>
-      <a href="http://datauy.org/" title="DATA">
-        <img src="img/logodata.png" alt="DATA"/>
-      </a>
-    </li>
-    <li>
-      <a href="http://www.msp.gub.uy/" title="MSP">
-        <img src="img/logomsp.png" alt="DATA"/>
-      </a>
-    </li>
-    <ul class="menu">
-      <li>Twitter</li>
-      <li>Facebook</li>
-    </ul>
-</div>
-</div>
-<div class="clearfix"> </div>
-<div class="header-select">
-  <div class="col-md-4">
-    <h2 id="seleccionar">Selecciona tu departamento</h2>
-    <p>Pod&eacute;s seleccionar tu mutualista actual o a la
-      que quieras comparar.</p>
-    <p>
-      <select>
-        <option value="montevideo">Montevideo</option>
-      </select>
-    </p>
-  </div>
-  <div class="col-md-4">
-    <h2>
-      Selecciona tu prestador de salud y afiliaci&oacute;n
-    </h2>
-    <p>
-      <select>
-        <option value="mi_prestador">Mi prestador de salud</option>
-      </select>
-    </p>
-    <p>
-      <select>
-        <option value="fonasa">Afiliado por FONASA</option>
-      </select>
-    </p>
-  </div>
-  <div class="col-md-4">
-    <h2>
-      Compara informaci&oacute;n de hasta 3 prestadores
-    </h2>
-    <p>
-      Selecciona en el listado hasta dos prestadores de salud
-      adem&aacute;s del tuyo y usa el bot&oacute;n Comparar ahora
-      a la derecha del listado.
-    </p>
-    <p>
-      <button class="entendi">Ya entendí</button>
-    </p>
-  </div>
-</div>
-</div>
-<!-- end header -->
-
-      <div ng-view=""></div>
-
-    <div id="footer">
-      <div class="row footer-info">
-        <div class="col-md-4">
-          <h4>Acerca de DATA</h4>
-          <p>
-            Gumbo beet greens corn soko endive gumbo gourd. Parsley
-            shallot courgette tatsoi pea sprouts fava bean collard
-            greens dandelion okra wakame tomato. Dandelion cucumber
-            earthnut pea peanut soko zucchini.
-          </p>
-          <p><a href="http://datauy.org">www.datauy.org</a></p>
-        </div>
-        <div class="col-md-4">
-          <h4>Acerca de MSP</h4>
-          <p>
-            Gumbo beet greens corn soko endive gumbo gourd. Parsley
-            shallot courgette tatsoi pea sprouts fava bean collard
-            greens dandelion okra wakame tomato. Dandelion cucumber
-            earthnut pea peanut soko zucchini.
-          </p>
-          <p><a href="http://www.msp.gub.uy">www.msp.gub.uy</a></p>
-        </div>
-        <div class="col-md-4">
-          <h4>Datos abiertos</h4>
-          <p>
-            Gumbo beet greens corn soko endive gumbo gourd. Parsley
-            shallot courgette tatsoi pea sprouts fava bean collard
-            greens dandelion okra wakame tomato. Dandelion cucumber
-            earthnut pea peanut soko zucchini.
-          </p>
-        </div>
+        <p><a href="http://datauy.org">www.datauy.org</a></p>
       </div>
-      <div class="row footer-pad"> </div>
+      <div class="col-md-4">
+        <h4>Acerca de MSP</h4>
+        <p>
+          Gumbo beet greens corn soko endive gumbo gourd. Parsley
+          shallot courgette tatsoi pea sprouts fava bean collard
+          greens dandelion okra wakame tomato. Dandelion cucumber
+          earthnut pea peanut soko zucchini.
+        </p>
+        <p><a href="http://www.msp.gub.uy">www.msp.gub.uy</a></p>
+      </div>
+      <div class="col-md-4">
+        <h4>Datos abiertos</h4>
+        <p>
+          Gumbo beet greens corn soko endive gumbo gourd. Parsley
+          shallot courgette tatsoi pea sprouts fava bean collard
+          greens dandelion okra wakame tomato. Dandelion cucumber
+          earthnut pea peanut soko zucchini.
+        </p>
+      </div>
     </div>
+    <div class="row footer-pad"> </div>
+  </div>
 
-    <!-- vendor scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular-resource.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular-route.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular-sanitize.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.9.5/select.js'></script>
+  <!-- vendor scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular-resource.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular-route.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular-sanitize.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.9.5/select.js'></script>
 
-    <!-- I chose angular-tour over intro.js (and others) because the latter needs to edit the controller for the step data -->
-    <!-- TODO: remove jQuery dependency when this is closed: https://github.com/DaftMonk/angular-tour/issues/13 -->
-    <!-- <script src="bower_components/jquery/jquery.js"></script> -->
-    <!-- <script src="bower_components/angular/angular.js"></script> -->
-    <!-- <script src="bower_components/angular&#45;tour/dist/angular&#45;tour&#45;tpls.js"></script> -->
+  <!-- I chose angular-tour over intro.js (and others) because the latter needs to edit the controller for the step data -->
+  <!-- TODO: remove jQuery dependency when this is closed: https://github.com/DaftMonk/angular-tour/issues/13 -->
+  <!-- <script src="bower_components/jquery/jquery.js"></script> -->
+  <!-- <script src="bower_components/angular/angular.js"></script> -->
+  <!-- <script src="bower_components/angular&#45;tour/dist/angular&#45;tour&#45;tpls.js"></script> -->
 
-    <!-- app scripts -->
-    <script src='app.js'></script>
-    <script src='common/services/load_data.js'></script>
-    <script src='home/home.js'></script>
-    <script src='comparison/comparison.js'></script>
+  <!-- app scripts -->
+  <script src='app.js'></script>
+  <script src='common/services/load_data.js'></script>
+  <script src='home/home.js'></script>
+  <script src='comparison/comparison.js'></script>
 </body>
 </html>
