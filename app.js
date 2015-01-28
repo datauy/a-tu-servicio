@@ -5,7 +5,6 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ui.select',
     'aTuServicioApp.home',
     'aTuServicioApp.comparison'
   ])

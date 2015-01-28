@@ -58,10 +58,14 @@
       <h2 id="seleccionar">Selecciona tu departamento</h2>
       <p>Pod&eacute;s seleccionar tu mutualista actual o a la
         que quieras comparar.</p>
+        {{states}}<br/>{{state}}
       <p>
-        <select>
-          <option value="montevideo">Montevideo</option>
-        </select>
+        <ui-select ng-model="state.selected" allow-clear="true" theme="select2">
+          <ui-select-match placeholder="Elija un departamento">{{state.selected.name}}</ui-select-match>
+          <ui-select-choices repeat="state in states">
+            <div ng-bind-html="state.name | highlight: $select.search"></div>
+          </ui-select-choices>
+        </ui-select>
       </p>
     </div>
     <div class="col-md-4">
@@ -69,14 +73,15 @@
         Selecciona tu prestador de salud y afiliaci&oacute;n
       </h2>
       <p>
-        <select>
-          <option value="mi_prestador">Mi prestador de salud</option>
-        </select>
-      </p>
-      <p>
-        <select>
-          <option value="fonasa">Afiliado por FONASA</option>
-        </select>
+        <ui-select ng-model="provider.selected" theme="select2" reset-search-input="true">
+          <ui-select-match placeholder="Elija una institución">
+            {{provider.id}} - {{provider.selected.estructura['Nombre abreviado']}}
+          </ui-select-match>
+          <ui-select-choices repeat="provider in providersByState(state.selected) track by $index">
+            <div ng-bind-html="provider.id"></div>
+            <div ng-bind-html="provider.estructura['Nombre abreviado'] | highlight: $select.search"></div>
+          </ui-select-choices>
+        </ui-select>
       </p>
     </div>
     <div class="col-md-4">

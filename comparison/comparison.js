@@ -1,4 +1,4 @@
-angular.module('aTuServicioApp.comparison', ['aTuServicioApp.services'])
+angular.module('aTuServicioApp.comparison', ['aTuServicioApp.services', 'ui.select'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/comparar', {
@@ -9,27 +9,14 @@ angular.module('aTuServicioApp.comparison', ['aTuServicioApp.services'])
 
 .controller('ComparisonController', function ($scope, dataService) {
   dataService.getDetails().then(function(res) {
-    var MAX_PROVIDERS_COMPARED = 3;
+    // TODO: repeated code from home and comparison
     var data = res.data;
     $scope.providers = data['providers'];
-    $scope.lookupByState = data['lookup_by_state'];
 
-    $scope.lookupByState.splice(0, 0, {name: "Todo el país"});
-    $scope.states = $scope.lookupByState;
-
-    // TODO: replace with real names
-    var providerStructure = $scope.providers[0];
-    // $scope.prices_attr = Object.keys(providerStructure.precios);
-    // $scope.times_attr = Object.keys(providerStructure.tiempos_espera);
-    // $scope.structure_attr = Object.keys(providerStructure.estructura);
-    // $scope.resources_attr = Object.keys(providerStructure.rrhh);
-
+    $scope.states = data['lookup_by_state'];
+    $scope.states.splice(0, 0, {name: "Todo el país"});
     $scope.state = {};
     $scope.provider = {}
-    $scope.selectedProviders = [];
-    $scope.maxComparedProviders = { "warning": false, "show": false };
-
-
     $scope.providersByState = function(lookupInfo) {
       if (lookupInfo && lookupInfo.name != "Todo el país" ) {
         return lookupInfo.providers.map(function(lookupItem) {
@@ -39,6 +26,11 @@ angular.module('aTuServicioApp.comparison', ['aTuServicioApp.services'])
         return $scope.providers;
       }
     };
+    // end repeated code
+
+    var MAX_PROVIDERS_COMPARED = 3;
+    $scope.selectedProviders = [];
+    $scope.maxComparedProviders = { "warning": false, "show": false };
 
     $scope.addToComparison = function(item, model) {
       if ($scope.selectedProviders.indexOf(item) < 0) {
