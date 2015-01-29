@@ -182,6 +182,13 @@ ul.menu > li{
     padding-bottom: 4px;
 }
 
+
+#comparision a i{
+    font-size: 30px;
+    color: #bebebe;
+    padding: -10px;
+}
+
 #listado{
     max-width: 100%;
     margin: 20px;

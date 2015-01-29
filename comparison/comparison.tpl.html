@@ -13,7 +13,7 @@
   </ul>
 </div>
 
-<div class="container" id="comparar">
+<div class="container" id="comparision">
   <h1>Comparar</h1>
 
   <div class="alert alert-warning dismissable" ng-show="showWarning()">
@@ -55,10 +55,8 @@
         <li>Criterio</li>
         <li ng-repeat="provider in selectedProviders">
           {{provider.estructura['Nombre Completo']}}
-          <a href="" class="dismissable">
-            <span class="glyphicon glyphicon-remove"
-                  aria-hidden="true"
-                  ng-click="removeFromComparison(provider)"></span>
+          <a href="#">
+            <i class="icon-trash" ng-click="removeFromComparison(provider)"></i>
           </a>
         </li>
         <!-- <p class="list&#45;group&#45;item&#45;text">Montevideo,
