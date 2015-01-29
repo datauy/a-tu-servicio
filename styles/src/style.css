@@ -102,6 +102,12 @@ ul.menu > li{
     position: relative;
 }
 
+#filtros ul.menu > li i{
+    font-size: 60px;
+    clear: both;
+    color: #000;
+}
+
 #filtros ul.menu > li:hover{
     background: #0d2f74;
 }
