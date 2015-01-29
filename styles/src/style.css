@@ -17,7 +17,15 @@ ul.menu > li{
 #header h2{
     font-size: 23px;
     line-height: 32px;
-    background: url(../img/01.png) left top no-repeat;
+    position: relative;
+}
+
+#header h2 i{
+    color: #000;
+    position: absolute;
+    left: -2px;
+    top: 2px;
+    font-size: 30px;
 }
 
 #header a{
@@ -26,10 +34,6 @@ ul.menu > li{
 
 .header-select .col-md-4 > *{
     padding-left: 39px;
-}
-
-#seleccionar{
-    background: url(../img/01.png) left top no-repeat;
 }
 
 #header select{
