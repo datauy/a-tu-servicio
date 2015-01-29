@@ -146,3 +146,8 @@ ul.menu li{
     margin-bottom: 150px;
     padding: 64px 24px;
 }
+
+#footer .datos-abiertos{
+    background: url(../img/datosabiertos.png) right center no-repeat;
+    padding-right: 100px;
+}
